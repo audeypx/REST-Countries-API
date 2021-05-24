@@ -13,7 +13,7 @@
         v-for="(card, index) in cards"
         :key="index"
       >
-        <div class="">
+        <div class="card-image">
           <img class="block w-full h-52" :src="card.image" alt="card-image" />
         </div>
         <div class="card_content py-4 px-8">
@@ -152,16 +152,12 @@ export default {
   }
 }
 
-/* .card .card_image {
-  height: 200px;
-} */
-
-/* .card .card_image img {
+img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   border-radius: 5px 5px 0 0;
-} */
+}
 
 .card .card_content {
   transform: scale(0.9);
