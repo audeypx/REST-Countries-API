@@ -140,14 +140,14 @@ export default {
 
 @media (max-width: 900px) {
   .card-container {
-    grid-template-columns: 100%;
+    grid-template-columns: repeat(2, 1fr);
     padding: 16px;
   }
 }
 
 @media (max-width: 768px) {
   .card-container {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 100%;
     padding: 16px;
   }
 }
