@@ -1,6 +1,7 @@
 <template>
   <div class="my-12 mx-auto px-4 md:px-12">
-    <div class="card-container">
+    <p v-if="isLoading">loading...</p>
+    <div v-else class="card-container">
       <div
         class="
           card
@@ -12,6 +13,7 @@
         "
         v-for="(card, index) in cards"
         :key="index"
+        @click="showDetails"
       >
         <div class="card-image">
           <img class="block w-full h-52" :src="card.image" alt="card-image" />
@@ -47,79 +49,32 @@ export default {
   data() {
     return {
       currentIndex: 0,
-      cards: [
-        {
-          image: 'https://picsum.photos/600/400/?random',
-          countryName: 'Nigeria',
-          population: '13,0000',
-          region: 'Africa',
-          capital: 'Abuja',
-        },
-        {
-          image: 'https://picsum.photos/600/400/?random',
-          countryName: 'Nigeria',
-          population: '13,0000',
-          region: 'Africa',
-          capital: 'Abuja',
-        },
-        {
-          image: 'https://picsum.photos/600/400/?random',
-          countryName: 'Nigeria',
-          population: '13,0000',
-          region: 'Africa',
-          capital: 'Abuja',
-        },
-        {
-          image: 'https://picsum.photos/600/400/?random',
-          countryName: 'Nigeria',
-          population: '13,0000',
-          region: 'Africa',
-          capital: 'Abuja',
-        },
-        {
-          image: 'https://picsum.photos/600/400/?random',
-          countryName: 'Nigeria',
-          population: '13,0000',
-          region: 'Africa',
-          capital: 'Abuja',
-        },
-        {
-          image: 'https://picsum.photos/600/400/?random',
-          countryName: 'Nigeria',
-          population: '13,0000',
-          region: 'Africa',
-          capital: 'Abuja',
-        },
-        {
-          image: 'https://picsum.photos/600/400/?random',
-          countryName: 'Nigeria',
-          population: '13,0000',
-          region: 'Africa',
-          capital: 'Abuja',
-        },
-        {
-          image: 'https://picsum.photos/600/400/?random',
-          countryName: 'Nigeria',
-          population: '13,0000',
-          region: 'Africa',
-          capital: 'Abuja',
-        },
-        {
-          image: 'https://picsum.photos/600/400/?random',
-          countryName: 'Nigeria',
-          population: '13,0000',
-          region: 'Africa',
-          capital: 'Abuja',
-        },
-        {
-          image: 'https://picsum.photos/600/400/?random',
-          countryName: 'Nigeria',
-          population: '13,0000',
-          region: 'Africa',
-          capital: 'Abuja',
-        },
-      ],
+      cards: [],
+      isLoading: false,
     }
+  },
+
+  created() {
+    this.loadCountries()
+  },
+  methods: {
+    loadCountries() {
+      this.isLoading = true
+      fetch('https://restcountries.eu/rest/v2/all')
+        .then((resp) => resp.json())
+        .then((result) => {
+          this.cards = result.map((entry) => ({
+            image: entry.flag,
+            countryName: entry.name,
+            population: entry.population,
+            region: entry.region,
+            capital: entry.capital,
+          }))
+        })
+        .finally(() => {
+          this.isLoading = false
+        })
+    },
   },
 }
 </script>
