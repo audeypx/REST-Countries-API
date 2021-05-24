@@ -5,19 +5,6 @@
 </template>
 
 <style>
-/* Default variable colours */
-:root {
-  --primary: hsl(0, 0%, 98%);
-  --secondary: hsl(0, 0%, 100%);
-  --text-color: hsl(200, 15%, 8%);
-}
-
-[data-theme='dark'] {
-  --primary: hsl(207, 26%, 17%);
-  --secondary: hsl(209, 23%, 22%);
-  --text-color: hsl(0, 0%, 100%);
-}
-
 * {
   margin: 0;
   padding: 0;

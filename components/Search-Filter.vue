@@ -16,7 +16,6 @@
           type="text"
           aria-label="Search Field"
           placeholder="Search for a country..."
-          v-model="SearchFilter"
         />
       </div>
 
