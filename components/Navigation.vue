@@ -6,7 +6,7 @@
     <div class="toggle-btn flex items-center cursor-pointer">
       <label class="switch relative inline-block">
         <!-- <p>{{ toggle ? toDark() : toLight() }}</p> -->
-        <!-- <input type="checkbox" v-model="toggle" /> -->
+        <input type="checkbox" />
         <span class="slider round"></span>
       </label>
     </div>
