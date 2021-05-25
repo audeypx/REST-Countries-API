@@ -16,6 +16,7 @@
           type="text"
           aria-label="Search Field"
           placeholder="Search for a country..."
+          @input="handleInput"
         />
       </div>
 
@@ -41,7 +42,7 @@
           "
           @click="showDropDown = !showDropDown"
         >
-          <strong>Filter By Region</strong>
+          <strong>{{ filterText }}</strong>
           <svg
             v-if="!showDropDown"
             xmlns="http://www.w3.org/2000/svg"
@@ -79,12 +80,12 @@
 
         <transition name="slide">
           <ul v-if="showDropDown" class="filter-content list-none">
-            <li class="" @click="filter('Africa')">Africa</li>
-            <li @click="filter('Americas')">Americas</li>
-            <li @click="filter('Americas')">Americas</li>
-            <li @click="filter('Asia')">Asia</li>
-            <li @click="filter('Europe')">Europe</li>
-            <li @click="filter('Oceania')">Oceania</li>
+            <li @click="handleFilter('All')">All</li>
+            <li @click="handleFilter('Africa')">Africa</li>
+            <li @click="handleFilter('Americas')">Americas</li>
+            <li @click="handleFilter('Asia')">Asia</li>
+            <li @click="handleFilter('Europe')">Europe</li>
+            <li @click="handleFilter('Oceania')">Oceania</li>
           </ul>
         </transition>
       </div>
@@ -95,10 +96,36 @@
 <script>
 export default {
   name: 'filter',
+  props: {
+    value: {},
+    onFilter: {
+      type: Function,
+      default: () => ({}),
+    },
+  },
   data() {
     return {
       showDropDown: false,
+      search: this.value,
+      filterText: 'Filter By Region',
     }
+  },
+  methods: {
+    handleInput(event) {
+      this.$emit('input', event.target.value)
+    },
+    handleFilter(value) {
+      this.filterText = value
+      this.onFilter(value)
+      this.showDropDown = false
+    },
+  },
+  watch: {
+    value(value) {
+      if (value !== '') {
+        this.filterText = 'All'
+      }
+    },
   },
 }
 </script>

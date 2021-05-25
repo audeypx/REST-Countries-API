@@ -11,29 +11,33 @@
           bg-light-secondary
           text-light-text
         "
-        v-for="(card, index) in cards"
+        v-for="(country, index) in countries"
         :key="index"
         @click="showDetails"
       >
         <div class="card-image">
-          <img class="block w-full h-52" :src="card.image" alt="card-image" />
+          <img
+            class="block w-full h-52"
+            :src="country.image"
+            alt="card-image"
+          />
         </div>
         <div class="card_content py-4 px-8">
           <div class="card_content-title pb-8">
-            <h2 class="font-bold text-3xl">{{ card.countryName }}</h2>
+            <h2 class="font-bold text-3xl">{{ country.countryName }}</h2>
           </div>
           <div class="card_content-info">
             <h4 class="font-bold pb-4">
               Population :
-              <span class="font-light">{{ card.population }}</span>
+              <span class="font-light">{{ country.population }}</span>
             </h4>
             <h4 class="font-bold pb-4">
               Region :
-              <span class="font-light">{{ card.region }}</span>
+              <span class="font-light">{{ country.region }}</span>
             </h4>
             <h4 class="font-bold pb-4">
               Capital:
-              <span class="font-light">{{ card.capital }}</span>
+              <span class="font-light">{{ country.capital }}</span>
             </h4>
           </div>
         </div>
@@ -45,36 +49,22 @@
 <script>
 export default {
   name: 'CountryCards',
-  props: ['image', 'countryName', 'population', 'region', 'capital'],
   data() {
     return {
       currentIndex: 0,
-      cards: [],
-      isLoading: false,
     }
   },
-
-  created() {
-    this.loadCountries()
+  props: {
+    countries: {
+      type: Array,
+      default: () => [],
+    },
+    isLoading: {
+      type: Boolean,
+    },
   },
   methods: {
-    loadCountries() {
-      this.isLoading = true
-      fetch('https://restcountries.eu/rest/v2/all')
-        .then((resp) => resp.json())
-        .then((result) => {
-          this.cards = result.map((entry) => ({
-            image: entry.flag,
-            countryName: entry.name,
-            population: entry.population,
-            region: entry.region,
-            capital: entry.capital,
-          }))
-        })
-        .finally(() => {
-          this.isLoading = false
-        })
-    },
+    showDetails() {},
   },
 }
 </script>
