@@ -9,6 +9,7 @@
           flex
           items-center
           bg-light-secondary
+          dark:bg-dark-secondary
           relative
         "
       >
@@ -17,12 +18,9 @@
           aria-label="Search Field"
           placeholder="Search for a country..."
           @input="handleInput"
+          class="text-light-text dark:text-dark-text"
         />
       </div>
-
-      <!-- <p>
-        <strong class="search-err">{{ search_error_message }}</strong>
-      </p> -->
 
       <div class="filter-wrapper mt-4 w-3/5 md:w-1/5">
         <button
@@ -32,7 +30,9 @@
             justify-between
             cursor-pointer
             bg-light-secondary
+            dark:bg-dark-secondary
             text-light-text
+            dark:text-dark-text
             border-none
             p-4
             items-center
@@ -79,13 +79,51 @@
         </button>
 
         <transition name="slide">
-          <ul v-if="showDropDown" class="filter-content list-none">
-            <li @click="handleFilter('All')">All</li>
-            <li @click="handleFilter('Africa')">Africa</li>
-            <li @click="handleFilter('Americas')">Americas</li>
-            <li @click="handleFilter('Asia')">Asia</li>
-            <li @click="handleFilter('Europe')">Europe</li>
-            <li @click="handleFilter('Oceania')">Oceania</li>
+          <ul
+            v-if="showDropDown"
+            class="
+              filter-content
+              list-none
+              bg-light-secondary
+              dark:bg-dark-secondary
+            "
+          >
+            <li
+              class="text-light-text dark:text-dark-text"
+              @click="handleFilter('All')"
+            >
+              All
+            </li>
+            <li
+              class="text-light-text dark:text-dark-text"
+              @click="handleFilter('Africa')"
+            >
+              Africa
+            </li>
+            <li
+              class="text-light-text dark:text-dark-text"
+              @click="handleFilter('Americas')"
+            >
+              Americas
+            </li>
+            <li
+              class="text-light-text dark:text-dark-text"
+              @click="handleFilter('Asia')"
+            >
+              Asia
+            </li>
+            <li
+              class="text-light-text dark:text-dark-text"
+              @click="handleFilter('Europe')"
+            >
+              Europe
+            </li>
+            <li
+              class="text-light-text dark:text-dark-text"
+              @click="handleFilter('Oceania')"
+            >
+              Oceania
+            </li>
           </ul>
         </transition>
       </div>
@@ -148,7 +186,6 @@ main .action-bar .search-wrapper input {
   margin-left: 8px;
   background: transparent;
   outline: none;
-  color: theme('colors.light.text');
 }
 
 /* main .action-bar .filter-wrapper {
@@ -162,7 +199,8 @@ main .action-bar .filter-wrapper select {
   width: 60%;
   outline: none;
   box-shadow: 0 2px 2px -2px rgba(0, 0, 0, 0.2);
-  background: theme('colors.light.primary');
+
+  /* background: theme('colors.light.primary'); */
   border-radius: 5px;
 }
 
@@ -172,7 +210,6 @@ main .action-bar .filter-wrapper .filter-btn {
 }
 
 .filter-content {
-  background: theme('colors.light.secondary');
   box-shadow: 0 2px 2px -2px rgba(0, 0, 0, 0.2);
   padding: 16px;
   margin: 2% auto;

@@ -9,7 +9,9 @@
           my-8
           cursor-pointer
           bg-light-secondary
+          dark:bg-dark-secondary
           text-light-text
+          dark:text-dark-text
         "
         v-for="(country, index) in countries"
         :key="index"

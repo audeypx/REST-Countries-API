@@ -1,17 +1,66 @@
 <template>
-  <nav class="flex justify-between items-center relative p-6 md:py-8 md:px-16">
+  <nav
+    class="
+      flex
+      justify-between
+      items-center
+      relative
+      p-6
+      md:py-8
+      md:px-16
+      bg-light-primary
+      dark:bg-dark-primary
+    "
+  >
     <div class="header-text">
-      <h3 class="font-extrabold">Where in the world?</h3>
+      <h3 class="font-extrabold text-light-text dark:text-dark-text">
+        Where in the world?
+      </h3>
     </div>
     <div class="toggle-btn flex items-center cursor-pointer">
       <label class="switch relative inline-block">
         <!-- <p>{{ toggle ? toDark() : toLight() }}</p> -->
-        <input type="checkbox" />
+        <input type="checkbox" @click="toDark" />
         <span class="slider round"></span>
       </label>
     </div>
   </nav>
 </template>
+
+<script>
+export default {
+  name: 'toggle',
+  data() {
+    return {
+      toggle: false,
+      showSkeleton: true,
+    }
+  },
+
+  methods: {
+    toDark() {
+      if (
+        localStorage.theme === 'dark' ||
+        (!('theme' in localStorage) &&
+          window.matchMedia('(prefers-color-scheme: dark)').matches)
+      ) {
+        document.documentElement.classList.add('dark')
+      } else {
+        document.documentElement.classList.remove('dark')
+      }
+
+      // Whenever the user explicitly chooses light mode
+      localStorage.theme = 'light'
+
+      // Whenever the user explicitly chooses dark mode
+      localStorage.theme = 'dark'
+
+      // Whenever the user explicitly chooses to respect the OS preference
+      localStorage.removeItem('theme')
+    },
+  },
+}
+</script>
 
 <style scoped>
 .switch {
@@ -73,7 +122,6 @@ input:checked + .slider::before {
 }
 
 nav {
-  background: theme('colors.light.primary');
   z-index: 9999;
   box-shadow: 0 2px 2px -2px rgba(0, 0, 0, 0.2);
 }

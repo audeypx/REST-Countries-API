@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-light-primary">
+  <div class="bg-light-primary dark:bg-dark-primary">
     <Navigation />
     <Search-Filter v-model="search" :onFilter="handleFilter" />
     <Country-cards :isLoading="isLoading" :countries="countries" />
