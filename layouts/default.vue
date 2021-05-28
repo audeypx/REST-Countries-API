@@ -15,6 +15,5 @@ html {
   font-family: 'Nunito Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: theme('colors.light.primary');
 }
 </style>
