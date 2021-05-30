@@ -39,24 +39,17 @@ export default {
 
   methods: {
     toDark() {
-      if (
-        localStorage.theme === 'dark' ||
-        (!('theme' in localStorage) &&
-          window.matchMedia('(prefers-color-scheme: dark)').matches)
-      ) {
+      const theme = localStorage.getItem('theme')
+      if (!theme) {
+        localStorage.setItem('theme', 'dark')
+      }
+      if (theme !== 'dark') {
+        localStorage.setItem('theme', 'dark')
         document.documentElement.classList.add('dark')
       } else {
+        localStorage.setItem('theme', 'light')
         document.documentElement.classList.remove('dark')
       }
-
-      // Whenever the user explicitly chooses light mode
-      localStorage.theme = 'light'
-
-      // Whenever the user explicitly chooses dark mode
-      localStorage.theme = 'dark'
-
-      // Whenever the user explicitly chooses to respect the OS preference
-      localStorage.removeItem('theme')
     },
   },
 }

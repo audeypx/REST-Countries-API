@@ -2,7 +2,8 @@
   <div class="my-12 mx-auto px-4 md:px-12">
     <p v-if="isLoading">loading...</p>
     <div v-else class="card-container">
-      <div
+      <nuxt-link
+        to="/details"
         class="
           card
           rounded-lg
@@ -15,7 +16,6 @@
         "
         v-for="(country, index) in countries"
         :key="index"
-        @click="showDetails"
       >
         <div class="card-image">
           <img
@@ -43,7 +43,7 @@
             </h4>
           </div>
         </div>
-      </div>
+      </nuxt-link>
     </div>
   </div>
 </template>
@@ -53,6 +53,7 @@ export default {
   name: 'CountryCards',
   data() {
     return {
+      showDetails: false,
       currentIndex: 0,
     }
   },
@@ -66,7 +67,9 @@ export default {
     },
   },
   methods: {
-    showDetails() {},
+    closeDetail(val) {
+      this.showDetails = val
+    },
   },
 }
 </script>

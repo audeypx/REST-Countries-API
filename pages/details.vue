@@ -1,8 +1,8 @@
 <template>
   <div>
     <Navigation />
-    <div class="back-button-wrapper">
-      <button class="back-button">
+    <!-- <div class="back-button-wrapper">
+      <button class="back-button" v-if="isOpen" @click.self="closeDetail">
         <strong>Back</strong>
       </button>
     </div>
@@ -136,16 +136,24 @@
         Developed by
         <a href="https://github.com/audeypx" target="_blank">Audrey</a>
       </code>
-    </div>
+    </div> -->
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  // name: 'Detail',
+  // props: ['isOpen', 'detail'],
+  // methods: {
+  //   closeDetail() {
+  //     this.$emit('closeDetail', false)
+  //   },
+  // },
+}
 </script>
 
 <style scoped>
-.border-country-wrapper {
+/* .border-country-wrapper {
   display: flex;
   flex-wrap: wrap;
   width: 100%;
@@ -211,5 +219,5 @@ strong {
 }
 .time-zone-wrapper {
   word-wrap: break-word;
-}
+} */
 </style>
