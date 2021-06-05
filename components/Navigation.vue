@@ -29,7 +29,7 @@
 
 <script>
 export default {
-  name: 'toggle',
+  name: 'Toggle',
   data() {
     return {
       toggle: false,

@@ -27,6 +27,14 @@ export default {
         population: entry.population,
         region: entry.region,
         capital: entry.capital,
+        nativeName: entry.nativeName,
+        subregion: entry.subregion,
+        topLevelDomain: entry.topLevelDomain,
+        currencies: entry.currencies,
+        languages: entry.languages,
+        timezones: entry.timezones,
+        callingCodes: entry.callingCodes,
+        alpha3code: entry.alpha3code,
       }))
     },
     loadCountries() {

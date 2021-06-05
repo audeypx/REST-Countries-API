@@ -17,15 +17,15 @@ export default {
       count: 0,
     }
   },
+  mounted() {
+    setInterval(this.add, 1500)
+  },
 
   methods: {
     add() {
       if (this.count === '') return
       this.count++
     },
-  },
-  mounted() {
-    setInterval(this.add, 1500)
   },
 }
 </script>

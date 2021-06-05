@@ -3,6 +3,8 @@
     <p v-if="isLoading">loading...</p>
     <div v-else class="card-container">
       <nuxt-link
+        v-for="(country, index) in countries"
+        :key="index"
         to="/details"
         class="
           card
@@ -14,8 +16,6 @@
           text-light-text
           dark:text-dark-text
         "
-        v-for="(country, index) in countries"
-        :key="index"
       >
         <div class="card-image">
           <img
@@ -51,12 +51,6 @@
 <script>
 export default {
   name: 'CountryCards',
-  data() {
-    return {
-      showDetails: false,
-      currentIndex: 0,
-    }
-  },
   props: {
     countries: {
       type: Array,
@@ -66,10 +60,11 @@ export default {
       type: Boolean,
     },
   },
-  methods: {
-    closeDetail(val) {
-      this.showDetails = val
-    },
+
+  data() {
+    return {
+      currentIndex: 0,
+    }
   },
 }
 </script>
