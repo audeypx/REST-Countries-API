@@ -73,7 +73,7 @@ export default {
 .card-container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-gap: 60px;
+  grid-gap: 2em;
 
   /* padding: 0 4em; */
   box-shadow: 0 2px 2px -2px rgba(0, 0, 0, 0.2);
